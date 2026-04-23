@@ -22,6 +22,7 @@ body {
   max-width: var(--max-width);
   margin: auto;
   padding: 5rem 1rem;
+overflow-x: hidden;
 }
 
 .section__header {
@@ -138,20 +139,34 @@ nav {
 
 .reservation__container h3 {
   
-font-size: 6rem;
+font-size: clamp(2.5rem, 10vw, 6rem);
   font-weight: 500;
   font-family: var(--header-font-2);
   color: var(--text-dark);
   text-align: center;
 }
 
+
 .reservation__container form {
-  max-width: 400px;
+  max-width: 600px;
   margin-inline: auto;
   margin-top: 4rem;
   display: grid;
   gap: 1rem;
+  grid-template-columns: 1fr;
+  padding: 0 1rem;
 }
+
+@media (min-width: 768px) {
+  .reservation__container form {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
+}
+
+
+
+
 
 .reservation__container input {
   padding: 0.75rem 1rem;
@@ -164,11 +179,7 @@ font-size: 6rem;
 .reservation__container input::placeholder {
   color: var(--text-dark);
 }
- .reservation__container form {
-    max-width: 600px;
-    grid-template-columns: repeat(2, 1fr);
-  } /*  θελει φτιαξιμο το UI, ειναι μεχ*/
-
+ 
 /*εικονα χταποδι*/
 /*.reservation img {
     display: flex;
@@ -187,6 +198,12 @@ font-size: 6rem;
  background-size: cover;
  background-repeat: no-repeat;
 }
+
+
+.footer__container {
+  overflow: hidden;
+}
+
 
 .footer__logo img {
   max-width: 250px;
@@ -244,6 +261,8 @@ font-size: 6rem;
   color: var(--white);
   text-align: center;
 }
+
+
 
 
  }
