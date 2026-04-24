@@ -279,7 +279,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
 }
 
 .menu-categories {
-  padding-top: 0,5rem;
+  padding-top: 0.5rem;
 }
 
 .menu-list {
@@ -345,8 +345,9 @@ font-size: clamp(2.5rem, 10vw, 6rem);
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 1000px;
-  margin: 0,5rem auto;
+  margin: 0.5rem auto;
   padding: 0 1rem;
+justify-items: center;
 }
 
 .cat {
