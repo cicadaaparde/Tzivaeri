@@ -345,7 +345,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 1000px;
-  margin: 4rem auto;
+  margin: 0,5rem auto;
   padding: 0 1rem;
 }
 
@@ -369,6 +369,8 @@ font-size: clamp(2.5rem, 10vw, 6rem);
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
 
 
  
