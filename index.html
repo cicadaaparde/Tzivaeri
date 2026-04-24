@@ -50,9 +50,30 @@
         <form action="https://formspree.io/f/mzdykkeg" method="POST">
           <input type="text" name="name" placeholder="NAME / ΌΝΟΜΑ" />
           <input type="email" name="email" placeholder="EMAIL" />
-<input type="date" id="datePicker" name="date" placeholder="DATE">
-<input type="time" id="timePicker" name="time" placeholder="TIME">          
-          <input type="number" name="people" placeholder="PEOPLE / ΆΤΟΜΑ" />
+
+
+<!-- λειτουργία αυτοματισμου στο JS, DATE-->
+
+<div class="input-icon-wrapper">
+<!--   <i class="ri-calendar-line"></i> -->
+  <select name="date" id="datePicker">
+    <option value="" disabled selected>DATE</option>
+      </select>
+</div>
+
+<div class="input-icon-wrapper">
+<!-- <i class="ri-time-line"></i> -->
+  <select name="time" id="timePicker">
+    <option value="" disabled selected>TIME</option>
+    <option>12:00</option>
+    <option>12:30</option>
+    <!-- κ.ο.κ. -->
+  </select>
+</div>          
+ 
+
+
+         <input type="number" name="people" placeholder="PEOPLE / ΆΤΟΜΑ" />
           <button class="btn" name="submit" type="submit">FIND TABLE</button>
         </form>
  </div>
