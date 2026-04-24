@@ -1,9 +1,26 @@
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: 
 
-:: CODE INSPO ::
+:: ΟΔΗΓΙΕΣ :: ΔΙΑΧΕΙΡΗΣΗ ΚΡΑΤΗΣΕΩΝ 
 
-https://youtu.be/5Akr1SYk-eU?si=OekAJJ4uf_i7hfAA 
-https://github.com/WebDesignMastery/Burger_House_06-03-24/tree/main
+Κρατήσεις μέσω της φόρμας formspree.
+
+Οι κρατήσεις πάνε απευθείας στο email σας
+
+Συνδέεστε στο προφιλ σας για συνολική προβολή 
+και διαχείρηση των κρατήσεων εδώ:
+
+https://formspree.io/forms/mzdykkeg/submissions
+
+-->[ΟΝΟΜΑ, ΙΜΕΙΛ, ΗΜΕΡΟΜΗΝΙΑ, ΩΡΑ, ΑΤΟΜΑ]<--
+
+:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: 
+:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: 
+
+:: DATE :: main.js λειτουργία
+
+Το main.js διαβάζει αυτόματα την σημερινή ημερομηνία και γεμίζει 
+το select με τις επόμενες 60 μέρες. 
+Δεν χρειάζεται να κάνεις τίποτα ποτέ, τρέχει μόνο του!!!! 
 
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: 
 
@@ -12,5 +29,15 @@ https://github.com/WebDesignMastery/Burger_House_06-03-24/tree/main
 Sitka Banner | Georgia | serif
 
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: 
+
+:: CODE INSPO ::
+
+https://youtu.be/5Akr1SYk-eU?si=OekAJJ4uf_i7hfAA 
+https://github.com/WebDesignMastery/Burger_House_06-03-24/tree/main
+
+:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: 
+
+
+
 
 
