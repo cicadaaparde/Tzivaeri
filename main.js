@@ -50,14 +50,39 @@ cats.forEach(cat => {
 
 
 
-/*    date&time issue!
-flatpickr("#date", {
-  dateFormat: "Y-m-d"
-});
 
-flatpickr("#time", {
-  enableTime: true,
-  noCalendar: true,
-  time_24hr: true,
-  dateFormat: "H:i"
-}); */
+//λειτουργία , αυτοματο γεμισμα ημερομηνίας!
+
+const dateSelect = document.getElementById("datePicker");
+const today = new Date();
+
+for (let i = 0; i < 60; i++) {
+  const d = new Date(today);
+  d.setDate(today.getDate() + i);
+  
+  const option = document.createElement("option");
+  option.value = d.toISOString().split("T")[0]; // "2026-04-24"
+  option.textContent = d.toLocaleDateString("el-GR", {
+    weekday: "short", day: "2-digit", month: "2-digit"
+  }); // "Παρ. 24 Απρ."
+  
+  dateSelect.appendChild(option);
+}
+
+
+
+
+
+const timeSelect = document.getElementById("timePicker");
+const times = [];
+
+for (let h = 12; h <= 23; h++) {
+  ["00", "30"].forEach(m => times.push(`${h}:${m}`));
+}
+
+times.forEach(t => {
+  const option = document.createElement("option");
+  option.value = t;
+  option.textContent = t;
+  timeSelect.appendChild(option);
+});
