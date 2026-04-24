@@ -58,6 +58,7 @@ overflow-x: hidden;
 
 nav {
   position: fixed;
+top: 0;
   width: 100%;
 /*  max-width: var(--max-width);*/
   margin-inline: auto;
@@ -337,7 +338,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
 }
 
 .menu-section {
-  scroll-margin-top: 160px;
+  scroll-margin-top: 170px;
 }
 
 .menu-categories {
@@ -372,6 +373,43 @@ justify-items: center;
 }
 
 
+
+
+
+/*
+
+.flatpickr-input {
+  cursor: pointer;
+  background-color: white;
+}
+
+.flatpickr-calendar {
+  font-family: "Sitka Banner", Georgia, serif;
+  border: 2px solid #212529;
+}
+
+.flatpickr-day.selected {
+  background: #92A4D1;
+  border-color: #92A4D1;
+}
+
+.flatpickr-time input {
+  font-size: 1rem;
+}
+*/ /*
+#datePicker {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/747/747310.png");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}
+
+#timePicker {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2088/2088617.png");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}*/
 
 
  
