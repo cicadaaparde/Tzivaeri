@@ -29,20 +29,35 @@ const sections = document.querySelectorAll(".menu-section");
 
 cats.forEach(cat => {
   cat.addEventListener("click", () => {
-    const target = cat.dataset.target;
+    const target = cat.getAttribute("data-target");
+    const section = document.getElementById(target);
 
-    // κρύψε όλα
+   
     sections.forEach(sec => sec.classList.remove("active"));
-
-    // βγάλε active από όλες τις κατηγορίες
     cats.forEach(c => c.classList.remove("active-cat"));
 
-    // δείξε το σωστό
-    document.getElementById(target).classList.add("active");
-
-    // highlight category
+  
+    section.classList.add("active");
     cat.classList.add("active-cat");
+
+ 
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
 });
 
 
+
+/*    date&time issue!
+flatpickr("#date", {
+  dateFormat: "Y-m-d"
+});
+
+flatpickr("#time", {
+  enableTime: true,
+  noCalendar: true,
+  time_24hr: true,
+  dateFormat: "H:i"
+}); */
