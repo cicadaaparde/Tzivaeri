@@ -21,3 +21,28 @@ const scrollRevealOption = {
 };
 
 
+
+
+
+const cats = document.querySelectorAll(".cat");
+const sections = document.querySelectorAll(".menu-section");
+
+cats.forEach(cat => {
+  cat.addEventListener("click", () => {
+    const target = cat.dataset.target;
+
+    // κρύψε όλα
+    sections.forEach(sec => sec.classList.remove("active"));
+
+    // βγάλε active από όλες τις κατηγορίες
+    cats.forEach(c => c.classList.remove("active-cat"));
+
+    // δείξε το σωστό
+    document.getElementById(target).classList.add("active");
+
+    // highlight category
+    cat.classList.add("active-cat");
+  });
+});
+
+
