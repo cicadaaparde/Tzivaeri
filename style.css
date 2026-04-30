@@ -145,6 +145,48 @@ top: 0;
 }
 
 
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: white;
+}
+
+.nav__menu__btn {
+  z-index: 10000;
+  position: relative;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .nav__links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding-top: 100px;
+    transition: 0.4s;
+    z-index: 9998;
+  }
+
+  .nav__links.open {
+    right: 0;
+  }
+}
+
+.menu,
+.reservation,
+.section__container {
+  padding-top: 120px;
+}
+
+
 /*maresei na kanei etsi apla ws twra*/
 
 /*ΡΑΝΤΕΒΟΥΖ*/
@@ -194,7 +236,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
   border: 1px solid var(--text-dark);
   font-size: 1rem;
   color: var(--text-dark);
-  backround-color: var(--white);
+  background-color: var(--white);
   width: 100%;
   cursor: pointer;
   appearance: none;
@@ -363,15 +405,7 @@ padding-left: 4rem;
   scroll-margin-top: 170px;
 }
 
-.menu-categories {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0.5rem auto;
-  padding: 0 1rem;
-  justify-items: center;
-}
+
 
 
 
@@ -392,14 +426,30 @@ padding-left: 4rem;
   font-family: var(--header-font-2);
   color: var(--primary-color);
 }
+
+
+.cat-row-last {
+  display: contents;
+}
+
+.menu-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
 @media (max-width: 768px) {
   .menu-categories {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
-.menu-categories .cat:nth-child(9),
-  .menu-categories .cat:nth-child(10),
-  .menu-categories .cat:nth-child(11) {
-    grid-column: auto;
+
+  .cat img {
+    width: 70px;
+  }
+
+  .cat h3 {
+    font-size: 14px;
   }
 }
 
