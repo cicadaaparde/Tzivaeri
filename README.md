@@ -3,7 +3,7 @@
 :: ΟΔΗΓΙΕΣ :: ΔΙΑΧΕΙΡΗΣΗ ΚΡΑΤΗΣΕΩΝ 
 
 Ανοίγετε το υπολογιστικό φύλλο εδώ:
-
+https://docs.google.com/spreadsheets/d/1ItA7o74vmOTxtFutieZ9vZTif803wkL4RgL5MpOPz1Y/edit?usp=drive_link 
 
 Εκεί εμφανίζονται όλες οι κρατήσεις σε λίστα.
 
