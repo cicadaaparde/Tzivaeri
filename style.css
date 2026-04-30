@@ -122,29 +122,12 @@ top: 0;
   white-space: nowrap;
   color: var(--white);
   transition: 0.3s;
-  padding-left: 38px;   /* χώρος για την εικόνα */
-}
-.nav__links a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 5px;
-  transform: translateY(-50%) scale(0);
- width: 40px;
-  height: 40px;
-  background-image: url("assets/lobster.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  opacity: 0;
-  transition: 0.25s ease;
+  padding-left: 0;   /* χώρος για την εικόνα */
 }
 
-.nav__links a:hover::before {
-  transform: translateY(-50%) scale(1);
-  opacity: 1;
+.nav__links a:hover {
+  color: var(--primary-color);
 }
-
 
 .header {
   position: fixed;
