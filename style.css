@@ -157,10 +157,12 @@ top: 0;
     padding-top: 100px;
     transition: 0.4s;
     z-index: 9998;
+transform: none;
   }
 
   .nav__links.open {
     right: 0;
+    transform: none;
   }
 }
 
