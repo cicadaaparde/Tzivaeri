@@ -86,3 +86,22 @@ times.forEach(t => {
   option.textContent = t;
   timeSelect.appendChild(option);
 });
+
+
+ /* <!-- νεο σιιτ /  εξωτερικα-εσωτερικα -->
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function (e) {
+  const date = document.getElementById("datePicker").value;
+  const time = document.getElementById("timePicker").value;
+
+  if (!date || !time) {
+    e.preventDefault();
+    alert("Please select Date and Time for your reservation");
+  }
+});
+
+efyge, θα ειναι λειτουργικο μονο με πληρωμενο συστημα που θα λειτουργει με γνωμονα την χωριτικοτητα του μαγαζιου*/
+
+
