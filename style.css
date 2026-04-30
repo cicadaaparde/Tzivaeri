@@ -61,11 +61,9 @@ overflow-x: hidden;
 
 nav {
   position: fixed;
-top: 0;
+  top: 0;
   width: 100%;
-/*  max-width: var(--max-width);*/
-  margin-inline: auto;
-  z-index: 9;
+  z-index: 9999;
 }
 
 .nav__header {
@@ -82,7 +80,7 @@ top: 0;
   max-width: 150px;
 }
 
-.nav__logo  {
+.nav__logo img {
   width: 120px;   
   height: auto;
 }
@@ -91,8 +89,11 @@ top: 0;
   font-size: 1.5rem;
   color: var(--white);
   cursor: pointer;
+z-index: 10000;
+  position: relative;
 }
-
+}
+/*
 .nav__links {
   position: absolute;
   top: 150px;
@@ -109,13 +110,35 @@ top: 0;
   transition: 0.5s;
   z-index: -1;
   transform: translateY(-100%); 
+}/*
+
+
+.nav__links {
+  display: none;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 100vh;
+  background: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 9998;
+  padding: 0;
 }
 
-
+/*
 .nav__links.open {
   transform: translateY(0);
-}
+}*/
 
+.nav__links.open {
+  display: flex;
+}
+/*
 .nav__links a {
   position: relative;
   font-weight: 600;
@@ -123,7 +146,9 @@ top: 0;
   color: var(--white);
   transition: 0.3s;
   padding-left: 0;   /* χώρος για την εικόνα */
-}
+}*/
+
+
 
 .nav__links a:hover {
   color: var(--primary-color);
@@ -483,17 +508,6 @@ padding-left: 4rem;
   pointer-events: none;
 }
 
-
- /* <!-- νεο σιιτ /  εξωτερικα-εσωτερικα -->
- .reservation__container form {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-} 
-
-efyge, θα ειναι λειτουργικο μονο με πληρωμενο συστημα που θα λειτουργει με γνωμονα την χωριτικοτητα του μαγαζιου
-*/
 
 
 .menu-section h2 {
