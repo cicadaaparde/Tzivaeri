@@ -2,6 +2,7 @@
 
 body {
   font-family: "Sitka Banner", Georgia, serif;
+overflow-x: hidden;
 }
 
 :root {
@@ -24,7 +25,7 @@ body {
   max-width: var(--max-width);
   margin: auto;
   padding: 5rem 1rem;
-overflow-x: hidden;
+
 }
 
 .section__header {
@@ -129,8 +130,8 @@ top: 0;
   left: 0;
   top: 5px;
   transform: translateY(-50%) scale(0);
-  width: 100px;
-  height: 100px;
+ width: 40px;
+  height: 40px;
   background-image: url("assets/lobster.png");
   background-size: contain;
   background-repeat: no-repeat;
