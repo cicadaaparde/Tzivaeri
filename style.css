@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 body {
   font-family: "Sitka Banner", Georgia, serif;
 }
@@ -363,13 +365,17 @@ padding-left: 4rem;
 
 .menu-categories {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   max-width: 1000px;
   margin: 0.5rem auto;
   padding: 0 1rem;
-justify-items: center;
+  justify-items: center;
 }
+
+
+
+
 
 .cat {
   text-align: center;
@@ -390,10 +396,26 @@ justify-items: center;
   .menu-categories {
     grid-template-columns: repeat(2, 1fr);
   }
+.menu-categories .cat:nth-child(9),
+  .menu-categories .cat:nth-child(10),
+  .menu-categories .cat:nth-child(11) {
+    grid-column: auto;
+  }
 }
 
 
+/* Τελευταία σειρά 3 κατηγοριών — καλύπτει όλο το πλάτος και κεντράρει */
+.menu-categories .cat-row-last {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+}
 
+.menu-categories .cat-row-last .cat {
+  width: 25%;                    /* ίδιο πλάτος με τα υπόλοιπα σε 4-column grid */
+  text-align: center;
+}
 
 
 
@@ -436,3 +458,40 @@ justify-items: center;
 
 efyge, θα ειναι λειτουργικο μονο με πληρωμενο συστημα που θα λειτουργει με γνωμονα την χωριτικοτητα του μαγαζιου
 */
+
+
+.menu-section h2 {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  margin: 2.5rem 0 1.5rem 0;
+  color: #b14a4a;
+}
+
+/* Τίτλος κατηγορίας (ΨΑΡΙΚΑ κλπ) */
+.menu-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  margin: 2.5rem 0 1.5rem 0;
+  color: #b14a4a; /* ελαφρύ μπορντό σαν την εικόνα */
+}
+
+/* Ελληνικά + τιμή */
+.item-gr {
+  color: #1f3a6d; /* σκούρο μπλε */
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Αγγλικά */
+.item-en {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  color: #333; /* μένει όπως είναι */
+}
+
+/* Τιμή */
+.price {
+  margin-left: 10px;
+}
