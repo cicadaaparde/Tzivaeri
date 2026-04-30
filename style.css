@@ -3,8 +3,8 @@ body {
 }
 
 :root {
-  --primary-color: #92A4D1;
-  --secondary-color: #FFB726;
+  --primary-color: #98B7F0;
+  --secondary-color: #F99590;
   --tertiary-color: #F9BE34;
   --text-dark: #212529;
   --white: #ffffff;
@@ -47,7 +47,7 @@ overflow-x: hidden;
   border: none;
   font-size: 1rem;
   color: var(--white);
-  background-color: var(--tertiary-color);
+  background-color: var(--secondary-color);
   transition: 0.3s;
   cursor: pointer;
 }
@@ -70,7 +70,9 @@ top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color:var(--primary-color);
+  background-image: url("assets/stripes2.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .nav__logo {
@@ -100,7 +102,7 @@ top: 0;
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   transition: 0.5s;
   z-index: -1;
   transform: translateY(-100%); 
@@ -112,16 +114,33 @@ top: 0;
 }
 
 .nav__links a {
+  position: relative;
   font-weight: 600;
   white-space: nowrap;
   color: var(--white);
   transition: 0.3s;
+  padding-left: 38px;   /* χώρος για την εικόνα */
+}
+.nav__links a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  transform: translateY(-50%) scale(0);
+  width: 100px;
+  height: 100px;
+  background-image: url("assets/lobster.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transition: 0.25s ease;
 }
 
-.nav__links a:hover {
-  color: var(--secondary-color);
+.nav__links a:hover::before {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
 }
-
 
 
 /*maresei na kanei etsi apla ws twra*/
@@ -205,7 +224,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
     width: clamp(100px, 25vw, 350px);
   }*/
 .footer{
- background-image: url("assets/bxtapodi.webp");
+ background-image: url("assets/view05.jpg");
  background-position: center center;
  background-size: cover;
  background-repeat: no-repeat;
@@ -223,6 +242,8 @@ font-size: clamp(2.5rem, 10vw, 6rem);
 
 .footer__content {
   margin-top: 2rem;
+padding-left: 4rem;
+
   display: grid;
   gap: 2rem;
 }
@@ -234,9 +255,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
 }
 
 .footer__links {
-  list-style: none;
-  display: grid;
-  gap: 1rem;
+  padding-left: 0rem;
 }
 
 .footer__links li {
@@ -246,7 +265,6 @@ font-size: clamp(2.5rem, 10vw, 6rem);
   font-weight: 500;
   color: var(--white);
 }
-
 .footer__links li span {
   font-size: 1.25rem;
 }
@@ -320,7 +338,7 @@ font-size: clamp(2.5rem, 10vw, 6rem);
 }
 
 .cat.active-cat {
-  background-color: var(--primary-color);
+  background-color: var(  --secondary-color);
   transform: scale(1.05);
 }
 
@@ -408,5 +426,13 @@ justify-items: center;
 }
 
 
+ /* <!-- νεο σιιτ /  εξωτερικα-εσωτερικα -->
+ .reservation__container form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+} 
 
- 
+efyge, θα ειναι λειτουργικο μονο με πληρωμενο συστημα που θα λειτουργει με γνωμονα την χωριτικοτητα του μαγαζιου
+*/
