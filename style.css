@@ -258,7 +258,8 @@ font-size: clamp(2.5rem, 10vw, 6rem);
 
 .footer__content {
   margin-top: 2rem;
-padding-left: 4rem;
+padding-left: 1rem;
+padding-right: 1rem;
 
   display: grid;
   gap: 2rem;
@@ -421,7 +422,7 @@ padding-left: 4rem;
   .menu-categories {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+
   .cat img {
     width: 70px;
   }
