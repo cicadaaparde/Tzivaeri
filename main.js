@@ -77,7 +77,7 @@ for (let i = 0; i < 60; i++) {
 const timeSelect = document.getElementById("timePicker");
 const times = [];
 
-for (let h = 13; h <= 23; h++) {
+for (let h = 12; h <= 23; h++) {
   ["00", "30"].forEach(m => times.push(`${h}:${m}`));
 }
 
