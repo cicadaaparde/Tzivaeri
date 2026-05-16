@@ -561,7 +561,7 @@ padding-right: 1rem;
 }
 
 .gallery .section__container h3 {
-  color: #fff;
+  color: color: var(--text-dark);;
 }
 
 .gallery .section__header {
@@ -606,3 +606,106 @@ padding-right: 1rem;
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+
+
+
+
+// QR WIFI
+body {
+      font-family: "Sitka Banner", Georgia, serif;
+      margin: 0;
+      background: #f0f4fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+.wifi-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+ 
+    .wifi-card {
+      background: var(--white);
+      border: 2px solid var(--primary-color);
+      border-radius: 20px;
+      width: 320px;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(152,183,240,0.18);
+    }
+ 
+    .wifi-card .wifi-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+ 
+    .wifi-label {
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+ 
+    .wifi-network {
+      font-family: 'Alfa Slab One', serif;
+      font-size: 1.35rem;
+      color: var(--text-dark);
+      margin-bottom: 0;
+      letter-spacing: 0.5px;
+    }
+ 
+    .divider {
+      border: none;
+      border-top: 1.5px dashed var(--secondary-color);
+      margin: 1.4rem 0;
+    }
+ 
+    .qr-box {
+      width: 180px;
+      height: 180px;
+      background: #f5f8ff;
+      border: 2px dashed var(--primary-color);
+      border-radius: 14px;
+      margin: 0 auto 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--primary-color);
+    }
+ 
+    .qr-box img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+ 
+    .qr-box .qr-placeholder-icon {
+      font-size: 2.8rem;
+    }
+ 
+    .qr-placeholder-text {
+      font-size: 0.8rem;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+ 
+    .scan-hint {
+      font-size: 0.78rem;
+      color: #aaa;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+    }
+ 
+   
