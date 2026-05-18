@@ -1,158 +1,294 @@
+<?php
+require 'config.php';
+
+$name   = trim($_POST['name'] ?? '');
+$phone  = trim($_POST['phone'] ?? '');
+$date   = trim($_POST['date'] ?? '');
+$time   = trim($_POST['time'] ?? '');
+$people = (int)($_POST['people'] ?? 0);
+$notes  = trim($_POST['notes'] ?? '');
+
+
+/* BASIC BOT PROTECTION */
+if (!empty($_POST['website'])) {
+    exit;
+}
+
+
+/* VALIDATION */
+
+if (strlen($name) > 100) {
+    die("Invalid name");
+}
+
+if (strlen($phone) > 30) {
+    die("Invalid phone");
+}
+
+if (strlen($notes) > 500) {
+    die("Notes too long");
+}
+
+if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+    die("Invalid date");
+}
+
+if (!preg_match('/^\d{2}:\d{2}$/', $time)) {
+    die("Invalid time");
+}
+
+if (!$name || !$phone || !$date || !$time || $people < 1) {
+    die("Missing fields");
+}
+
+
+/* CAPACITY */
+
+$capacity = 80;
+
+$timeForDb = strlen($time) === 5 ? $time . ":00" : $time;
+
+$stmt = $pdo->prepare("
+    SELECT COALESCE(SUM(people), 0)
+    FROM reservations
+    WHERE res_date = ?
+      AND res_time = ?
+      AND status IN ('active','arrived')
+");
+
+$stmt->execute([$date, $timeForDb]);
+
+$current = (int)$stmt->fetchColumn();
+
+
+/* FULL CAPACITY */
+
+if (($current + $people) > $capacity) {
+
+    $reject = $pdo->prepare("
+        INSERT INTO reservations 
+        (name, phone, res_date, res_time, people, notes, source, status, rejection_reason)
+        VALUES (?, ?, ?, ?, ?, ?, 'online', 'rejected', ?)
+    ");
+
+    $reject->execute([
+        $name,
+        $phone,
+        $date,
+        $timeForDb,
+        $people,
+        $notes,
+        'Capacity full'
+    ]);
+
+    die('
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-   <!-- <script async src="https://tally.so/widgets/embed.js"></script>-->
-   
-<link rel="stylesheet" href="style.css" />
-<title>To Tziavaeri</title>
-  </head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Availability</title>
+
+<style>
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#f4f6f8;
+  font-family:Georgia, serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem;
+}
+
+.box{
+  max-width:500px;
+  background:white;
+  padding:2.2rem;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  text-align:center;
+  border-top:6px solid #dc3545;
+}
+
+h1{
+  color:#b00020;
+  margin-top:0;
+  margin-bottom:1rem;
+}
+
+p{
+  line-height:1.7;
+  font-size:1.05rem;
+  color:#222;
+}
+
+a{
+  display:inline-block;
+  margin-top:1.2rem;
+  background:#f99590;
+  color:white;
+  padding:.95rem 1.4rem;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+a:hover{
+  opacity:.92;
+}
+
+</style>
+</head>
+
 <body>
-    <header class="header">
-      <nav>
-        <div class="nav__header">
-          <div class="nav__logo">
-            <a href="#">
-              <img
-                src="assets/Tzivaeri Final Logo Vertical.png"
-                alt="logo"
-                class="nav__logo"
-              />
-                          </a>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
-        <ul class="nav__links" id="nav-links">
-         <!-- <li><a href="#home">HOME</a></li> -->
-          
-          <li><a href="menu.html">MENU</a></li>
-   
-          <li><a href="#contact">RESERVATIONS</a></li>
 
-          <li><a href="gallery.html">GALLERY</a></li>
+<div class="box">
 
-          <li><a href="wifi.html">WiFi</a></li>
+<img src="assets/Tzivaeri-Final-Logo-Horizontal.jpg" alt="Tzivaeri Logo" style="max-width:220px; margin-bottom:1.5rem;">
 
+  <h1>No Availability</h1>
 
-        </ul>
-      </nav>
+  <p>
+    Δυστυχώς δεν υπάρχει διαθέσιμη χωρητικότητα.<br>
+    Unfortunately, there is no availability for this time slot.
+  </p>
 
+  <p>
+    Παρακαλούμε καλέστε μας στο:<br>
+    Please call us at:<br><br>
 
+    <b>2273032637</b>
+  </p>
 
-     </header>
+  <a href="index.html">
+    Return to Homepage
+  </a>
 
-<!-- ΡΑΝΤΕΒΟΥ -->
- <section class="reservation" id="contact">
-      <div class="section__container reservation__container">
-        <h3>RESERVATION</h3>
-        <h2 class="section__header">BOOK YOUR TABLE</h2>
-
-<p class="pet-friendly">
-                      <img src="assets/lobster.png" class="lobster" alt="">
-    <span>PET FRIENDLY SPACE</span>
-                      <img src="assets/lobster.png" class="lobster" alt="">
-</p>
-
-        <form action="https://script.google.com/macros/s/AKfycby7U9qS0lZep09EuKan5lBS-KUg_iAqE-elByrIkdOTcBPlR5rmTn8OnfoLCYZPkRs/exec" method="POST">
-          <input type="text" name="name" placeholder="NAME / ΌΝΟΜΑ" required />
-          <input type="tel" name="phone" placeholder="PHONE / ΤΗΛΕΦΩΝΟ" required />
-
-
-
-      
-
-
-
-<!-- λειτουργία αυτοματισμου στο JS, DATE-->
-
-<div class="input-icon-wrapper">
-<!--   <i class="ri-calendar-line"></i> -->
-  <select name="date" id="datePicker">
-    <option value="" disabled selected>DATE</option>
-      </select>
 </div>
 
-<div class="input-icon-wrapper">
-<!-- <i class="ri-time-line"></i> -->
-  <select name="time" id="timePicker">
-    <option value="" disabled selected>TIME</option>
-
-    <!-- κ.ο.κ. -->
-  </select>
-</div>          
- 
-
-
-         <input type="number" name="people" placeholder="PEOPLE / ΆΤΟΜΑ" min="1" max="20" required/>
-
-
-<textarea 
-  name="notes" 
-  placeholder="NOTES / Allergies / Special requests"
-  rows="3"
-></textarea>    
-
-
-          <button class="btn" name="submit" type="submit">FIND TABLE</button>
-        </form>
- </div>
-      
-</section>
+</body>
+</html>
+');
+}
 
 
 
- <footer class="footer">
-      <div class="section__container footer__container">
-        <div class="footer__logo">
-       <!--  <img
-        src="assets/xtapodi.webp"
-        alt="reservation"
-        class="reservation__bg-1"
-      />-->
-        </div>
-        <div class="footer__content">
-<div class="footer__logo">
-  <img src="assets/Tzivaeri-Final-Logo-Horizontal.jpg" alt="Logo">
+/* SAVE RESERVATION */
+
+$insert = $pdo->prepare("
+    INSERT INTO reservations 
+    (name, phone, res_date, res_time, people, notes, source, status)
+    VALUES (?, ?, ?, ?, ?, ?, 'online', 'active')
+");
+
+$insert->execute([
+    $name,
+    $phone,
+    $date,
+    $timeForDb,
+    $people,
+    $notes
+]);
+
+
+/* SUCCESS PAGE */
+
+echo '
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservation Confirmed</title>
+
+<style>
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#f4f6f8;
+  font-family:Georgia, serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem;
+}
+
+.box{
+  max-width:500px;
+  background:white;
+  padding:2.2rem;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  text-align:center;
+  border-top:6px solid #f99590;
+}
+
+h1{
+  color:#1f3a6d;
+  margin-top:0;
+  margin-bottom:1rem;
+}
+
+p{
+  line-height:1.7;
+  font-size:1.05rem;
+  color:#222;
+}
+
+a{
+  display:inline-block;
+  margin-top:1.2rem;
+  background:#f99590;
+  color:white;
+  padding:.95rem 1.4rem;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+a:hover{
+  opacity:.92;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<img src="assets/Tzivaeri-Final-Logo-Horizontal.jpg" alt="Tzivaeri Logo" style="max-width:220px; margin-bottom:1.5rem;">
+
+
+  <h1>Reservation Confirmed</h1>
+
+  <p>
+    Η κράτησή σας καταχωρήθηκε επιτυχώς.<br>
+
+  </p>
+
+  <p>
+    Για <b>' . htmlspecialchars($people) . '</b> άτομα<br>
+
+
+    Στις <b>' . htmlspecialchars($time) . '</b>
+  </p>
+
+  <p>
+    Σας περιμένουμε στο Τζιβαέρι.<br>
+    We look forward to welcoming you.
+  </p>
+
+  <a href="index.html">
+    Return to Homepage
+  </a>
+
 </div>
-          <p>
-            TRADITIONAL TAVERN
-		
-          </p>
-          <div>
-            <ul class="footer__links">
-              <li>
-                <span><i class="ri-map-pin-2-fill"></i></span>
-                Κων/νου Κανάρη, Νέο Καρλόβασι 832 00
-              </li>
-              <li>
-                <span><i class="ri-phone-fill"></i></span>
-                2273 032637
-              </li>
-            </ul>
-        <div class="footer__socials">
-             
-              <a href="https://www.instagram.com/to_tzivaeri_samos"><i class="ri-instagram-fill"></i></a>              
-              <a href="https://wa.me/306978408174"><i class="ri-whatsapp-fill"></i></a>
 
-<a href="https://www.facebook.com/profile.php?id=61564907222455"><i class="ri-facebook-fill"></i></a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer__bar">
-        Copyright © 2026 "Το Τζιβαέρι". All rights reserved.
-      </div>
-    </footer>
-       <script src="https://unpkg.com/scrollreveal"></script>
-
-<script src="main.js"></script>
-    </body>
-   </html>
+</body>
+</html>
+';
+?>
